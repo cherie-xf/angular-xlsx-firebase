@@ -1,0 +1,62 @@
+<html ng-app='MyApp'>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+	<!-- Angular -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+
+	<!-- Firebase -->
+	<script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+
+	<!-- AngularFire -->
+	<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+	<!-- Xlsx -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.full.min.js"></script>
+	<script src="js/lib/xlsx-model.js"></script>
+	
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.css" rel="stylesheet">
+
+	<link href="css/style.css" rel="stylesheet">
+	
+	<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAwZIJe9U8jkzSZO-bobNqhrDVCz-116nI",
+    authDomain: "adam-7c474.firebaseapp.com",
+    databaseURL: "https://adam-7c474.firebaseio.com",
+    storageBucket: "adam-7c474.appspot.com",
+    messagingSenderId: "187482999323"
+  };
+  firebase.initializeApp(config);
+	</script>
+</head>
+<body ng-controller='mainCtrl as ctrl'>
+
+  <div class="container">
+
+      <div class="header">
+        
+      </div>
+      
+      <div class="content">
+  	  	  <div class="side-bar" ng-class="{'slide-out' : !ctrl.sidebarActive}">
+  	  	  	<div class="dash-nav">dash 1</div>
+  	  	  	<div class="dash-nav">dash 2</div>
+  	  	  	<div class="dash-nav">dash 3</div>
+  	  	  </div>
+
+
+      	  <div class="main"  >
+      		 <h2>Select or drop XLSX files:</h2>
+    		 <input type="file" class="form-control" xlsx-model="excel" multiple>
+             <pre ng-show="excel">{{excel | json}}</pre>
+
+      	  </div><!-- end of main-->
+      </div>
+   </div>
+
+
+
+
+	<script src="js/myApp.js"></script>
+</body>
+</html>
