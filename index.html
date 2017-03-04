@@ -10,13 +10,14 @@
 	<!-- AngularFire -->
 	<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
 	<!-- Xlsx -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.full.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.full.min.js"></script>
 	<script src="js/lib/xlsx-model.js"></script>
-	
+	<script src="js/lib/smart-table.min.js"></script>
+
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.css" rel="stylesheet">
 
 	<link href="css/style.css" rel="stylesheet">
-	
+
 	<script>
   // Initialize Firebase
   var config = {
@@ -33,24 +34,45 @@
 
   <div class="container">
 
-      <div class="header">
-        
-      </div>
-      
-      <div class="content">
-  	  	  <div class="side-bar" ng-class="{'slide-out' : !ctrl.sidebarActive}">
-  	  	  	<div class="dash-nav">dash 1</div>
-  	  	  	<div class="dash-nav">dash 2</div>
-  	  	  	<div class="dash-nav">dash 3</div>
-  	  	  </div>
+        <div class="header">
+
+        </div>
+
+        <div class="content">
+          <div class="side-bar" ng-class="{'slide-out' : !ctrl.sidebarActive}">
+        </div>
 
 
-      	  <div class="main"  >
-      		 <h2>Select or drop XLSX files:</h2>
-    		 <input type="file" class="form-control" xlsx-model="excel" multiple>
-             <pre ng-show="excel">{{excel | json}}</pre>
+        <div class="main"  >
+          <h2>Select or drop XLSX files:</h2>
+          <input type="file" class="form-control" xlsx-model="excel" multiple>
+          <!--
+           <pre ng-show="excel">{{excel | json}}</pre>
+           -->
+           <div class="xlsx-table">
+             <table st-table="data" class="table table-striped">
+               <thead>
+                 <tr>
+                   <th>Meter ID</th>
+                   <th>Location ID</th>
+                   <th>Group Name</th>
+                   <th>Reason</th>
+                   <th>User</th>
+                   <th>Date</th>
+                 </tr> </thead>
+                 <tbody>
+                   <tr ng-repeat="row in data">
+                     <td>{{row.meterId}}</td>
+                     <td>{{row.locationId}}</td>
+                     <td>{{row.group}}</td>
+                     <td>{{row.reason}}</td>
+                     <td>{{row.date}}</td>
+                   </tr>
+               </tbody>
+             </table>
+           </div>
 
-      	  </div><!-- end of main-->
+        </div><!-- end of main-->
       </div>
    </div>
 
